@@ -17,6 +17,8 @@ module.exports = {
         'vue/html-indent': ['error', 4],
         'vue/html-end-tags': 'off',
         'vue/html-self-closing': 'off',
+        'no-import-assign': 'off',
+        'vue/attribute-hyphenation': 'off',
 
         // Possible errors
         'comma-dangle': [

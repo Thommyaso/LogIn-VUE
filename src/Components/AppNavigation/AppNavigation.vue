@@ -10,7 +10,7 @@ const Btnclasses = {
 };
 </script>
 <template>
-    <nav class="bbbb navbar navbar-expand-lg bg-body-tertiary ">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary ">
         <div class="container-fluid">
             <AppButton
                 :btn-class="Btnclasses.navBrand"
@@ -32,15 +32,15 @@ const Btnclasses = {
                 id="navbarSupportedContent"
                 class="collapse navbar-collapse"
             >
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item navlink-custom">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 navbarCustom__container">
+                    <li class="nav-item navbarCustom__navLink">
                         <AppButton
                             :btn-class="Btnclasses.navLink"
                             btn-text="Home"
                             @click="router.push('/')"
                         />
                     </li>
-                    <li class="nav-item navlink-custom">
+                    <li class="nav-item navbarCustom__navLink">
                         <AppButton
                             :btn-class="Btnclasses.navLink"
                             btn-text="User Profile"
@@ -49,7 +49,7 @@ const Btnclasses = {
                     </li>
                 </ul>
                 <div
-                    class="d-flex navbtn-custom"
+                    class="d-flex navbarCustom__navBtn"
                 >
                     <AppButton
                         :btn-class="Btnclasses.navBtnPrimaryOutline"

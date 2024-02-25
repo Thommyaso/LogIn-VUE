@@ -1,0 +1,18 @@
+.AppLogInForm {
+    background-color: var(--background-color-primary);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--form-padding);
+    margin: var(--page-margin);
+    border-radius: var(--form-border-radius);
+    max-width: var(--form-max-width);
+
+    &__btnContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+        width: var(--input-width);
+    }
+}

@@ -1,0 +1,12 @@
+.inputContainerCustom {
+    display: flex;
+    flex-direction: column-reverse;
+
+    &__label {
+        margin-right: 0.3rem;
+    }
+
+    &__input {
+        width: var(--input-width);
+    }
+}
