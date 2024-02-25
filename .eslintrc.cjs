@@ -1,12 +1,19 @@
 /* eslint-env node */
 module.exports = {
     root: true,
-    extends: ['plugin:vue/vue3-essential', 'eslint:recommended', 'plugin:storybook/recommended'],
+    extends: [
+        'plugin:vue/vue3-essential',
+        'eslint:recommended',
+        'plugin:storybook/recommended',
+        'plugin:vue/vue3-recommended',
+    ],
     parserOptions: {
         ecmaVersion: 'latest',
     },
+
     rules: {
-    // Rules are divided into sections from http://eslint.org/docs/rules/
+        'vue/html-indent': ['error', 4],
+        // Rules are divided into sections from http://eslint.org/docs/rules/
 
         // Possible errors
         'comma-dangle': [
