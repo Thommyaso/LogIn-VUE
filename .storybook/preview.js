@@ -1,4 +1,5 @@
 import '../src/bootstrap.scss';
+import * as bootstrap from 'bootstrap';
 
 /** @type { import('@storybook/vue3').Preview } */
 const preview = {

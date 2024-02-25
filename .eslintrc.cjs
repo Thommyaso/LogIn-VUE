@@ -12,8 +12,11 @@ module.exports = {
     },
 
     rules: {
-        'vue/html-indent': ['error', 4],
         // Rules are divided into sections from http://eslint.org/docs/rules/
+
+        'vue/html-indent': ['error', 4],
+        'vue/html-end-tags': 'off',
+        'vue/html-self-closing': 'off',
 
         // Possible errors
         'comma-dangle': [

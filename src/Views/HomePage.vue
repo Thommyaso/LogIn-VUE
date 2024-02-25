@@ -1,10 +1,10 @@
 <script setup>
 const classes = ['btn-outline-primary', 'btn-lg'];
 import router from '@/Router';
-import AppButtons from '../Components/AppButtons/AppButtons.vue';
+import AppButton from '../Components/AppButton/AppButton.vue';
 </script>
 <template>
-    <AppButtons
+    <AppButton
         :btn-class="classes"
         btn-text="Log In"
         @click="router.push('/login')"

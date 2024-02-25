@@ -1,4 +1,5 @@
 <script setup>
+import './AppButton.scss';
 import {computed} from 'vue';
 
 const props = defineProps({
