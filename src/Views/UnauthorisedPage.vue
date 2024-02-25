@@ -2,6 +2,6 @@
 </script>
 <template>
     <h1 class="pageHeader">
-        Welcome to the Home Page
+        Unauthorised
     </h1>
 </template>

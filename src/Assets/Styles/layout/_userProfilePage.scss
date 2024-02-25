@@ -1,0 +1,31 @@
+.userProfileForm {
+    background-color: var(--background-color-primary);
+    padding: var(--form-padding);
+    margin: var(--page-margin);
+    border-radius: var(--form-border-radius);
+    max-width: var(--form-max-width);
+
+    &__container {
+        border-radius: 0.2rem;
+        background-color: rgb(128 128 128 / 18.5%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.4rem;
+    }
+
+    &__header {
+        text-align: center;
+    }
+
+    &__paragraph {
+        display: flex;
+        width: 100%;
+        justify-content: end;
+    }
+
+    &__span-lg {
+        font-size: 1.5rem;
+        font-weight: 300;
+    }
+}

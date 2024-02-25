@@ -2,7 +2,7 @@
 import './AppNavigation.scss';
 import router from '@/Router';
 import AppButton from '../AppButton/AppButton.vue';
-const Btnclasses = {
+const btnClasses = {
     navLink: 'nav-link',
     navBtnPrimary: 'btn-primary',
     navBtnPrimaryOutline: ['btn-outline-primary', 'navbtn-custom'],
@@ -13,7 +13,7 @@ const Btnclasses = {
     <nav class="navbar navbar-expand-lg bg-body-tertiary ">
         <div class="container-fluid">
             <AppButton
-                :btn-class="Btnclasses.navBrand"
+                :btn-class="btnClasses.navBrand"
                 btn-text="LogIn App"
                 @click="router.push('/')"
             />
@@ -35,14 +35,14 @@ const Btnclasses = {
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 navbarCustom__container">
                     <li class="nav-item navbarCustom__navLink">
                         <AppButton
-                            :btn-class="Btnclasses.navLink"
+                            :btn-class="btnClasses.navLink"
                             btn-text="Home"
                             @click="router.push('/')"
                         />
                     </li>
                     <li class="nav-item navbarCustom__navLink">
                         <AppButton
-                            :btn-class="Btnclasses.navLink"
+                            :btn-class="btnClasses.navLink"
                             btn-text="User Profile"
                             @click="router.push('/userprofile')"
                         />
@@ -52,14 +52,14 @@ const Btnclasses = {
                     class="d-flex navbarCustom__navBtn"
                 >
                     <AppButton
-                        :btn-class="Btnclasses.navBtnPrimaryOutline"
+                        :btn-class="btnClasses.navBtnPrimaryOutline"
                         btn-text="Log In"
                         @click="router.push('/login')"
                     />
                     <AppButton
-                        :btn-class="Btnclasses.navBtnPrimary"
+                        :btn-class="btnClasses.navBtnPrimary"
                         btn-text="Register"
-                        @click="router.push('/login')"
+                        @click="router.push('/register')"
                     />
                 </div>
             </div>

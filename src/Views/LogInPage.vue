@@ -1,3 +1,6 @@
+<script setup>
+import AppLogInForm from '../Components/AppLogInForm/AppLogInForm.vue';
+</script>
 <template>
-    <h1>Log In</h1>
+    <AppLogInForm />
 </template>
