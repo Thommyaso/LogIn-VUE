@@ -6,7 +6,6 @@ import router from '@/Router';
 const store = useSessionStore();
 
 onBeforeMount(async () => {
-    console.log(store.userDetails.username, 'here');
     await store.retriveData()
         .catch((err) => {
             console.error(err);

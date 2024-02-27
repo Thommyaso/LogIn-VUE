@@ -63,7 +63,6 @@ const router = createRouter({
 
 */
 router.beforeEach((__to, __from, next) => {
-    console.log(window.localStorage.isLoggedIn);
     const store = useSessionStore();
     const currentLogInStatus = window.localStorage.isLoggedIn;
 

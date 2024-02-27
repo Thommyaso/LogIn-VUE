@@ -19,15 +19,6 @@ export const useSessionStore = defineStore('sessionStore', {
             window.localStorage.isLoggedIn = false;
             this.isLoggedIn = false;
         },
-        setUserDetails(data) {
-            this.userDetails = {
-                username: data.data.username,
-                name: data.data.name,
-                surname: data.data.surname,
-                age: data.data.age,
-
-            };
-        },
         async register(data) {
             return await axios.post(`${this.baseUrl}register`, data, {
                 withCredentials: true,
@@ -63,7 +54,6 @@ export const useSessionStore = defineStore('sessionStore', {
                         name: res.data.name,
                         surname: res.data.surname,
                         age: res.data.age,
-
                     };
                 })
                 .catch((err) => {

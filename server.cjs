@@ -38,6 +38,36 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.json());
 
+app.post('/register', async function (req, res) {
+    const user = users.find((user) => user.username === req.body.username);
+
+    if (user) {
+        res.status(409);
+        res.send();
+        return;
+    }
+
+    const newUser = {
+        username: req.body.username,
+        password: req.body.password,
+        name: req.body.name,
+        surname: req.body.surname,
+        age: req.body.age,
+    };
+
+    req.session.user = {
+        username: req.body.username,
+        name: req.body.name,
+        surname: req.body.surname,
+        age: req.body.age,
+    };
+
+    users.push(newUser);
+    res
+        .status(200)
+        .send();
+});
+
 app.post('/login', function (req, res) {
     const user = users.find((user) => user.username === req.body.username);
 
@@ -50,7 +80,6 @@ app.post('/login', function (req, res) {
                 surname: surname,
                 username: username,
                 age: age,
-
             };
             res
                 .status(200)
