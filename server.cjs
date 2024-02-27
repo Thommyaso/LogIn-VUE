@@ -86,4 +86,12 @@ app.post('/userprofile', function (req, res) {
     }
 });
 
+app.get('/logout', function (req, res) {
+    req.session.destroy();
+    res
+        .clearCookie('connect.sid', {path: '/'})
+        .status(200)
+        .send();
+});
+
 app.listen(3000);

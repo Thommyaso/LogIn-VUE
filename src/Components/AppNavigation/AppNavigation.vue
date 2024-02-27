@@ -61,7 +61,7 @@ const btnClasses = {
                     <AppButton
                         :btn-class="btnClasses.navBtnSecondaryOutline"
                         btn-text="Log Out"
-                        @click="router.push('/')"
+                        @click="router.push('/logout')"
                     />
                 </div>
                 <div

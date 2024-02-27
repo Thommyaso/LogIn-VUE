@@ -6,6 +6,7 @@ import RegisterPage from '@/Views/RegisterPage.vue';
 import UnauthorisedPage from '../Views/UnauthorisedPage.vue';
 import PageNotFound from '../Views/PageNotFound.vue';
 import {useSessionStore} from '../Stores/sessionStore.js/';
+import LogOutPage from '@/Views/LogOutPage.vue';
 
 let previousLogInStatus = null;
 
@@ -40,6 +41,12 @@ const routes = [
         name: 'PageNotFound',
         component: PageNotFound,
     },
+    {
+        path: '/logout',
+        name: 'LogOutPage',
+        component: LogOutPage,
+    },
+
 ];
 
 const router = createRouter({
@@ -56,6 +63,7 @@ const router = createRouter({
 
 */
 router.beforeEach((__to, __from, next) => {
+    console.log(window.localStorage.isLoggedIn);
     const store = useSessionStore();
     const currentLogInStatus = window.localStorage.isLoggedIn;
 

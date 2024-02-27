@@ -1,10 +1,20 @@
 <script setup>
-const props = defineProps({
-    userDetails: {
-        type: Array,
-        default: null,
-    },
-});
+import {useSessionStore} from '@/Stores/sessionStore';
+import {onBeforeMount} from 'vue';
+import router from '@/Router';
+
+const store = useSessionStore();
+
+onBeforeMount(async () => {
+    console.log(store.userDetails.username, 'here');
+    await store.retriveData()
+        .catch((err) => {
+            console.error(err);
+            router.push('/login');
+        });
+},
+);
+
 </script>
 <template>
     <div class="container userProfileForm">
@@ -12,17 +22,53 @@ const props = defineProps({
             Details:
         </h1>
         <div
-            v-for="detail in props.userDetails"
-            :key="detail.id"
             class="row userProfileForm__container"
         >
             <div class="col-5">
                 <div class="userProfileForm__paragraph">
-                    <span>{{ detail.label }}</span>
+                    <span>Username:</span>
                 </div>
             </div>
             <div class="col-7">
-                <span class="userProfileForm__span-lg">{{ detail.text }}</span>
+                <span class="userProfileForm__span-lg">{{ store.userDetails.username }}</span>
+            </div>
+        </div>
+        <div
+            class="row userProfileForm__container"
+        >
+            <div class="col-5">
+                <div class="userProfileForm__paragraph">
+                    <span>Name:</span>
+                </div>
+            </div>
+            <div class="col-7">
+                <span class="userProfileForm__span-lg">{{ store.userDetails.name }}</span>
+            </div>
+        </div>
+
+        <div
+            class="row userProfileForm__container"
+        >
+            <div class="col-5">
+                <div class="userProfileForm__paragraph">
+                    <span>Surname:</span>
+                </div>
+            </div>
+            <div class="col-7">
+                <span class="userProfileForm__span-lg">{{ store.userDetails.surname }}</span>
+            </div>
+        </div>
+
+        <div
+            class="row userProfileForm__container"
+        >
+            <div class="col-5">
+                <div class="userProfileForm__paragraph">
+                    <span>Age:</span>
+                </div>
+            </div>
+            <div class="col-7">
+                <span class="userProfileForm__span-lg">{{ store.userDetails.age }}</span>
             </div>
         </div>
     </div>
