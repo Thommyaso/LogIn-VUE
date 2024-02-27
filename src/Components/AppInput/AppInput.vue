@@ -1,6 +1,8 @@
 <script setup>
 import './AppInput.scss';
 import {computed} from 'vue';
+
+const inputValue = defineModel({type: String});
 const props = defineProps({
     floating: {
         type: Boolean,
@@ -28,6 +30,7 @@ const setInputStyle = computed(() => {
     <div :class="setInputStyle">
         <input
             :id="props.inputId"
+            v-model="inputValue"
             class="form-control inputContainerCustom__input"
             placeholder=""
             :type="props.inputType"
