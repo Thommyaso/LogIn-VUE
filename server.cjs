@@ -2,8 +2,20 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const cors = require('cors');
+const bcrypt = require('bcrypt');
 const session = require('express-session');
 require('dotenv').config();
+
+const hashPassword = async (pw) => {
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(pw, salt);
+    return hash;
+};
+
+const logIn = async (pw, hashedPw) => {
+    const result = await bcrypt.compare(pw, hashedPw);
+    return result;
+};
 
 const config = {
     appUrl: process.env.APP_URL ? process.env.APP_URL : 'http://localhost:5173',
@@ -13,13 +25,22 @@ const config = {
 };
 
 const users = [
-    {
-        username: 'Jesse01',
-        password: 'abcd',
-        name: 'Jesse',
-        surname: 'James',
-        age: 28,
-    },
+    /*
+
+        Users will be added here.
+        Each user will be stored as an individual object.
+        Sotred passwords will be hashed and salted using bcrypt
+        Example:
+
+            {
+                username: 'Jesse01',
+                password: '$2b$10$phdxe7Pr2ZrDRK7N/rOfvuStYLmSqggQ1upagGIv2.B7S3od13NK.',
+                name: 'Jesse',
+                surname: 'James',
+                age: 28
+            },
+
+    */
 ];
 
 app.use(session({
@@ -49,7 +70,7 @@ app.post('/register', async function (req, res) {
 
     const newUser = {
         username: req.body.username,
-        password: req.body.password,
+        password: await hashPassword(req.body.password),
         name: req.body.name,
         surname: req.body.surname,
         age: req.body.age,
@@ -61,18 +82,19 @@ app.post('/register', async function (req, res) {
         surname: req.body.surname,
         age: req.body.age,
     };
-
     users.push(newUser);
     res
         .status(200)
         .send();
 });
 
-app.post('/login', function (req, res) {
+app.post('/login', async function (req, res) {
     const user = users.find((user) => user.username === req.body.username);
 
     if (user) {
-        if (req.body.password === user.password) {
+        const isMatched = await logIn(req.body.password, user.password);
+
+        if (isMatched) {
             const {name, surname, username, age} = user;
 
             req.session.user = {
