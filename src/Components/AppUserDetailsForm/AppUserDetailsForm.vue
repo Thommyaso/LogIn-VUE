@@ -1,4 +1,5 @@
 <script setup>
+import './AppUserDetailsForm.scss';
 import {useSessionStore} from '@/Stores/sessionStore';
 import {onBeforeMount} from 'vue';
 import router from '@/Router';

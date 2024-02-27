@@ -17,34 +17,65 @@ const routes = [
         component: HomePage,
     },
     {
-        path: '/login',
-        name: 'LogInPage',
-        component: LogInPage,
-    },
-    {
-        path: '/userprofile',
-        name: 'UserProfilePage',
-        component: UserProfilePage,
-    },
-    {
-        path: '/register',
-        name: 'RegisterPage',
-        component: RegisterPage,
-    },
-    {
         path: '/forbidden',
         name: 'UnauthorisedPage',
         component: UnauthorisedPage,
     },
     {
-        path: '/pagenotfound',
+        path: '/:pathMatch(.*)*',
         name: 'PageNotFound',
         component: PageNotFound,
+    },
+    {
+        path: '/login',
+        name: 'LogInPage',
+        component: LogInPage,
+        beforeEnter: (__to, __from, next) => {
+            if (window.localStorage.isLoggedIn === 'true') {
+                next('/userprofile');
+            } else {
+                next();
+            }
+        },
+
+    },
+    {
+        path: '/userprofile',
+        name: 'UserProfilePage',
+        component: UserProfilePage,
+        beforeEnter: (__to, __from, next) => {
+            if (window.localStorage.isLoggedIn === 'true') {
+                next();
+            } else {
+                next('/login');
+            }
+        },
+    },
+    {
+        path: '/register',
+        name: 'RegisterPage',
+        component: RegisterPage,
+        beforeEnter: (__to, __from, next) => {
+            if (window.localStorage.isLoggedIn === 'true') {
+                next('/userprofile');
+            } else {
+                next();
+            }
+        },
+
     },
     {
         path: '/logout',
         name: 'LogOutPage',
         component: LogOutPage,
+        beforeEnter: (__to, __from, next) => {
+            if (window.localStorage.isLoggedIn === 'true') {
+                next();
+            } else {
+                next('/login');
+            }
+        },
+
     },
 
 ];
