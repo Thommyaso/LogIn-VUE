@@ -2,9 +2,15 @@
 import './AppNavigation.scss';
 import router from '@/Router';
 import AppButton from '../AppButton/AppButton.vue';
+import {useSessionStore} from '../../Stores/sessionStore.js';
+import {storeToRefs} from 'pinia';
+
+const store = useSessionStore();
+const {isLoggedIn} = storeToRefs(store);
 const btnClasses = {
     navLink: 'nav-link',
     navBtnPrimary: 'btn-primary',
+    navBtnSecondaryOutline: 'btn-outline-secondary',
     navBtnPrimaryOutline: ['btn-outline-primary', 'navbtn-custom'],
     navBrand: ['navbar-brand'],
 };
@@ -26,13 +32,13 @@ const btnClasses = {
                 aria-expanded="false"
                 aria-label="Toggle navigation"
             >
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon" />
             </button>
             <div
                 id="navbarSupportedContent"
                 class="collapse navbar-collapse"
             >
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 navbarCustom__container">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item navbarCustom__navLink">
                         <AppButton
                             :btn-class="btnClasses.navLink"
@@ -49,6 +55,17 @@ const btnClasses = {
                     </li>
                 </ul>
                 <div
+                    v-if="isLoggedIn === true"
+                    class="d-flex navbarCustom__navBtn"
+                >
+                    <AppButton
+                        :btn-class="btnClasses.navBtnSecondaryOutline"
+                        btn-text="Log Out"
+                        @click="router.push('/')"
+                    />
+                </div>
+                <div
+                    v-else
                     class="d-flex navbarCustom__navBtn"
                 >
                     <AppButton
