@@ -36,6 +36,9 @@ export const useSessionStore = defineStore('sessionStore', {
                 });
 
         },
+        async retriveData() {
+            return await axios.post(`${this.baseUrl}userprofile`, {}, {withCredentials: true});
+        },
         async logOut() {
             return await axios.get(`${this.baseUrl}logout`, {
                 withCredentials: true,

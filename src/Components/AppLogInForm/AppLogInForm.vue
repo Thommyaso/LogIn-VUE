@@ -17,9 +17,11 @@ const handleLogInClick = async () => {
     };
     await store.login(data)
         .then(() => {
+            window.localStorage.isLoggedIn = true;
             router.push('/userprofile');
         })
         .catch((err) => {
+            window.localStorage.isLoggedIn = false;
             console.log(err);
         });
 };

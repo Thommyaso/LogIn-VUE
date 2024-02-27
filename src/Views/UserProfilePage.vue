@@ -1,26 +1,48 @@
 <script setup>
 import AppUserDetailsForm from '../Components/AppUserDetailsForm/AppUserDetailsForm.vue';
-const exampleDetails = [{
-    id: 1,
-    label: 'Username:',
-    text: 'Thomas01',
+import {useSessionStore} from '@/Stores/sessionStore';
+import {onBeforeMount, ref} from 'vue';
+import router from '@/Router';
+
+const fetchedUserDetails = ref();
+
+onBeforeMount(async () => {
+    await store.retriveData()
+        .then((res) => {
+            fetchedUserDetails.value = [
+                {
+                    id: 1,
+                    label: 'Username:',
+                    text: res.data.username,
+                },
+                {
+                    id: 2,
+                    label: 'Name:',
+                    text: res.data.name,
+                },
+                {
+                    id: 3,
+                    label: 'Surname:',
+                    text: res.data.surname,
+                },
+                {
+                    id: 4,
+                    label: 'Age:',
+                    text: res.data.age,
+                },
+            ];
+        })
+        .catch((err) => {
+            window.localStorage.isLoggedIn = false;
+            console.log(err);
+            router.push('/login');
+        });
 },
-{
-    id: 2,
-    label: 'Name:',
-    text: 'Thomas',
-},
-{
-    id: 3,
-    label: 'Surname:',
-    text: 'Abcde',
-},
-{
-    id: 4,
-    label: 'Age:',
-    text: 28,
-}];
+);
+
+const store = useSessionStore();
+
 </script>
 <template>
-    <AppUserDetailsForm :userDetails="exampleDetails" />
+    <AppUserDetailsForm :userDetails="fetchedUserDetails" />
 </template>
