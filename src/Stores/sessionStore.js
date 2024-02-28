@@ -4,7 +4,7 @@ import axios from 'axios';
 export const useSessionStore = defineStore('sessionStore', {
     state: () => {
         return {
-            baseUrl: import.meta.env.VITE_API_BASE_URL,
+            baseUrl: import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:3000/',
             isLoggedIn: window.localStorage.isLoggedIn === 'true',
             userDetails: {},
         };

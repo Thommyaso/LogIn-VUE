@@ -18,8 +18,8 @@ const logIn = async (pw, hashedPw) => {
 };
 
 const config = {
-    appUrl: process.env.APP_URL ? process.env.APP_URL : 'http://localhost:5173',
-    sessionSecret: process.env.SESSION_SECRET ? process.env.SESSION_SECRET : 'f4db803b-cdcd-4f28-833d-3936c7925700',
+    appUrl: process.env.APP_URL ?? 'http://localhost:5173',
+    sessionSecret: process.env.SESSION_SECRET ?? 'f4db803b-cdcd-4f28-833d-3936c7925700',
     sessionExpiryTime: process.env.SESSION_EXPIRATION_TIME ? parseInt(process.env.SESSION_EXPIRATION_TIME) : 300000,
 
 };
