@@ -1,5 +1,5 @@
 <script setup>
-import AppLogInForm from '../Components/AppLogInForm/AppLogInForm.vue';
+import AppLogInForm from '../Containers/AppLogInForm/AppLogInForm.vue';
 </script>
 <template>
     <AppLogInForm />

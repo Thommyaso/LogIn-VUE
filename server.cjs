@@ -93,7 +93,6 @@ app.post('/login', async function (req, res) {
 
     if (user) {
         const isMatched = await logIn(req.body.password, user.password);
-
         if (isMatched) {
             const {name, surname, username, age} = user;
 
@@ -108,13 +107,13 @@ app.post('/login', async function (req, res) {
                 .send();
             return;
         }
-    } else {
-        req.session.destroy();
-        res
-            .clearCookie('connect.sid', {path: '/'})
-            .status(401)
-            .send();
     }
+
+    req.session.destroy();
+    res
+        .clearCookie('connect.sid', {path: '/'})
+        .status(401)
+        .send();
 });
 
 app.post('/userprofile', function (req, res) {

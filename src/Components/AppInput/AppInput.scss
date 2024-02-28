@@ -1,6 +1,7 @@
 .inputContainerCustom {
     display: flex;
     flex-direction: column-reverse;
+    height: fit-content;
 
     &__label {
         margin-right: 0.3rem;
@@ -9,4 +10,17 @@
     &__input {
         width: var(--input-width);
     }
+}
+
+.inputErrMsg {
+    &__paragraph {
+        color: red;
+        font-size: 0.875rem;
+        margin-left: 0.2rem;
+        margin-bottom: 0;
+    }
+}
+
+.resetMargin {
+    margin-bottom: 0;
 }

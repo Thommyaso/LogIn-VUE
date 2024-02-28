@@ -2,7 +2,7 @@ import {createRouter, createWebHistory} from 'vue-router';
 import HomePage from '@/Views/HomePage.vue';
 import LogInPage from '@/Views/LogInPage.vue';
 import UserProfilePage from '@/Views/UserProfilePage.vue';
-import RegisterPage from '@/Views/RegisterPage.vue';
+import RegistrationPage from '@/Views/RegistrationPage.vue';
 import UnauthorisedPage from '../Views/UnauthorisedPage.vue';
 import PageNotFound from '../Views/PageNotFound.vue';
 import {useSessionStore} from '../Stores/sessionStore.js/';
@@ -53,8 +53,8 @@ const routes = [
     },
     {
         path: '/register',
-        name: 'RegisterPage',
-        component: RegisterPage,
+        name: 'RegistrationPage',
+        component: RegistrationPage,
         beforeEnter: (__to, __from, next) => {
             if (window.localStorage.isLoggedIn === 'true') {
                 next('/userprofile');

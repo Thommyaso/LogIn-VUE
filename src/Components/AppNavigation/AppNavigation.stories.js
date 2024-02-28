@@ -4,9 +4,13 @@ export default {
     title: 'Navigation',
     component: AppNavigation,
     tags: ['autodocs'],
-    argTypes: {},
+    argTypes: {
+        isLoggedIn: {controll: {type: Boolean}},
+    },
 };
 
 export const NavigationBar = {
-    args: {},
+    args: {
+        isLoggedIn: false,
+    },
 };

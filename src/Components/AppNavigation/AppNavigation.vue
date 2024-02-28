@@ -2,17 +2,19 @@
 import './AppNavigation.scss';
 import router from '@/Router';
 import AppButton from '../AppButton/AppButton.vue';
-import {useSessionStore} from '../../Stores/sessionStore.js';
-import {storeToRefs} from 'pinia';
 
-const store = useSessionStore();
-const {isLoggedIn} = storeToRefs(store);
+const props = defineProps({
+    isLoggedIn: {
+        type: Boolean,
+        default: false,
+    },
+});
 const btnClasses = {
     navLink: 'nav-link',
     navBtnPrimary: 'btn-primary',
     navBtnSecondaryOutline: 'btn-outline-secondary',
     navBtnPrimaryOutline: ['btn-outline-primary', 'navbtn-custom'],
-    navBrand: ['navbar-brand'],
+    navBrand: 'navbar-brand',
 };
 </script>
 <template>
@@ -55,7 +57,7 @@ const btnClasses = {
                     </li>
                 </ul>
                 <div
-                    v-if="isLoggedIn === true"
+                    v-if="props.isLoggedIn === true"
                     class="d-flex navbarCustom__navBtn"
                 >
                     <AppButton

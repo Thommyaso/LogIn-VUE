@@ -1,5 +1,5 @@
 <script setup>
-import AppLogOutForm from '../Components/AppLogOutForm/AppLogOutForm.vue';
+import AppLogOutForm from '@/Containers/AppLogOutForm/AppLogOutForm.vue';
 </script>
 <template>
     <AppLogOutForm />

@@ -1,6 +1,6 @@
 <script setup>
 import './AppLogOutForm.scss';
-import AppButton from '../AppButton/AppButton.vue';
+import AppButton from '@/Components/AppButton/AppButton.vue';
 import {useSessionStore} from '@/Stores/sessionStore';
 import router from '@/Router';
 
