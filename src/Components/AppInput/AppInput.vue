@@ -26,7 +26,7 @@ const props = defineProps({
     },
     autocomplete: {
         type: String,
-        default: null,
+        default: 'off',
     },
 });
 const setInputStyle = computed(() => {
@@ -49,11 +49,11 @@ const setInputStyle = computed(() => {
             :for="props.inputId"
         >{{ props.labelText }}</label>
     </div>
-    <div class="inputErrMsg">
-        <p
-            v-if="errorMessage"
-            class="inputErrMsg__paragraph"
-        >
+    <div
+        v-if="errorMessage"
+        class="inputErrMsg"
+    >
+        <p class="inputErrMsg__paragraph">
             {{ errorMessage }}
         </p>
     </div>

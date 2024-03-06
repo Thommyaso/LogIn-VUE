@@ -66,7 +66,7 @@ const handleSubmitClick = async () => {
             };
             await store.register(data)
                 .then(() => {
-                    router.push('/userprofile');
+                    router.push('/login');
                 })
                 .catch((err) => {
                     console.error(err.response);

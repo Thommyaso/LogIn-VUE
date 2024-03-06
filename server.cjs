@@ -7,14 +7,37 @@ const session = require('express-session');
 require('dotenv').config();
 
 const hashPassword = async (pw) => {
-    const salt = await bcrypt.genSalt(10);
-    const hash = await bcrypt.hash(pw, salt);
-    return hash;
+    let password = null;
+
+    await bcrypt.genSalt(10)
+        .then(async (salt) => {
+            await bcrypt.hash(pw, salt).catch((err) => console.error(err))
+                .then((pass) => {
+                    password = pass;
+                })
+                .catch((err) => {
+                    console.error(err);
+                });
+        })
+        .catch((err) => {
+            console.error(err);
+        });
+    if (password) {
+        return password;
+    }
+    console.error('Failed to generate hashed password');
 };
 
 const logIn = async (pw, hashedPw) => {
-    const result = await bcrypt.compare(pw, hashedPw);
-    return result;
+    return await bcrypt.compare(pw, hashedPw)
+        .then((res) => {
+            return res;
+        })
+        .catch((err) => {
+            console.error(err);
+            console.error('failed to compare passwords');
+            return false;
+        });
 };
 
 const config = {
@@ -63,28 +86,29 @@ app.post('/register', async function (req, res) {
     const user = users.find((user) => user.username === req.body.username);
 
     if (user) {
-        res.status(409);
-        res.send();
+        res.status(409)
+            .send();
         return;
     }
 
-    const newUser = {
-        username: req.body.username,
-        password: await hashPassword(req.body.password),
-        name: req.body.name,
-        surname: req.body.surname,
-        age: req.body.age,
-    };
-
-    req.session.user = {
-        username: req.body.username,
-        name: req.body.name,
-        surname: req.body.surname,
-        age: req.body.age,
-    };
-    users.push(newUser);
+    const hashedPassword = await hashPassword(req.body.password);
+    if (hashedPassword) {
+        const newUser = {
+            username: req.body.username,
+            password: hashedPassword,
+            name: req.body.name,
+            surname: req.body.surname,
+            age: req.body.age,
+        };
+        users.push(newUser);
+        res
+            .status(200)
+            .send();
+        return;
+    }
+    console.error('failed to set up the password');
     res
-        .status(200)
+        .status(500)
         .send();
 });
 
