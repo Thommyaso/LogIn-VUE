@@ -8,11 +8,24 @@
     margin: var(--page-margin);
     border-radius: var(--form-border-radius);
     max-width: var(--form-max-width);
+    padding-top: 0;
 
     &__btnContainer {
         display: flex;
         flex-direction: row;
         justify-content: end;
         width: var(--input-width);
+    }
+}
+
+.logInerrMsg {
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__paragraph {
+        margin: 0;
+        color: red;
     }
 }

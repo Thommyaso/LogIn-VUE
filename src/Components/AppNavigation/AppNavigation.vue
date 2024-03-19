@@ -2,11 +2,19 @@
 import './AppNavigation.scss';
 import router from '@/Router';
 import AppButton from '../AppButton/AppButton.vue';
+
+const props = defineProps({
+    isLoggedIn: {
+        type: Boolean,
+        default: false,
+    },
+});
 const btnClasses = {
     navLink: 'nav-link',
     navBtnPrimary: 'btn-primary',
+    navBtnSecondaryOutline: 'btn-outline-secondary',
     navBtnPrimaryOutline: ['btn-outline-primary', 'navbtn-custom'],
-    navBrand: ['navbar-brand'],
+    navBrand: 'navbar-brand',
 };
 </script>
 <template>
@@ -26,13 +34,13 @@ const btnClasses = {
                 aria-expanded="false"
                 aria-label="Toggle navigation"
             >
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon" />
             </button>
             <div
                 id="navbarSupportedContent"
                 class="collapse navbar-collapse"
             >
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 navbarCustom__container">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item navbarCustom__navLink">
                         <AppButton
                             :btn-class="btnClasses.navLink"
@@ -49,6 +57,17 @@ const btnClasses = {
                     </li>
                 </ul>
                 <div
+                    v-if="props.isLoggedIn === true"
+                    class="d-flex navbarCustom__navBtn"
+                >
+                    <AppButton
+                        :btn-class="btnClasses.navBtnSecondaryOutline"
+                        btn-text="Log Out"
+                        @click="router.push('/logout')"
+                    />
+                </div>
+                <div
+                    v-else
                     class="d-flex navbarCustom__navBtn"
                 >
                     <AppButton

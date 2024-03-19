@@ -1,8 +1,14 @@
 {
-  "extends": ["stylelint-config-standard-scss","stylelint-scss"],
-  "plugins": ["stylelint-scss", "stylelint-prettier"],
-  "rules": {
-    "prettier/prettier": true,
-    "selector-class-pattern": null
-  }
+    "extends": [
+        "stylelint-config-standard-scss",
+        "stylelint-scss"
+    ],
+    "plugins": [
+        "stylelint-scss",
+        "stylelint-prettier"
+    ],
+    "rules": {
+        "prettier/prettier": true,
+        "selector-class-pattern": null
+    }
 }

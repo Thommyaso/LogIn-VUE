@@ -1,6 +1,10 @@
 /* eslint-env node */
 module.exports = {
     root: true,
+    env: {
+        node: true,
+        browser: true,
+    },
     extends: [
         'plugin:vue/vue3-essential',
         'eslint:recommended',
@@ -210,7 +214,7 @@ module.exports = {
             // 4 spaces
             4,
             {
-            // # of units defined above
+                // # of units defined above
                 SwitchCase: 1,
             },
         ],
@@ -234,7 +238,7 @@ module.exports = {
                 maxEOF: 1,
             },
         ],
-        'no-nested-ternary': 2,
+        'no-nested-ternary': 0,
         'no-new-object': 2,
         'no-spaced-func': 2,
         'no-ternary': 0,
