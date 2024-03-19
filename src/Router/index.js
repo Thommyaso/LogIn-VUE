@@ -1,33 +1,34 @@
 import {createRouter, createWebHistory} from 'vue-router';
+import {useSessionStore} from '../Stores/sessionStore.js/';
+import paths from './paths';
 import HomePage from '@/Views/HomePage.vue';
 import LogInPage from '@/Views/LogInPage.vue';
 import UserProfilePage from '@/Views/UserProfilePage.vue';
 import RegistrationPage from '@/Views/RegistrationPage.vue';
 import UnauthorisedPage from '../Views/UnauthorisedPage.vue';
 import PageNotFound from '../Views/PageNotFound.vue';
-import {useSessionStore} from '../Stores/sessionStore.js/';
 import LogOutPage from '@/Views/LogOutPage.vue';
 
 let previousLogInStatus = null;
 
 const routes = [
     {
-        path: '/',
+        path: paths.homePage,
         name: 'HomePage',
         component: HomePage,
     },
     {
-        path: '/forbidden',
+        path: paths.unauthorisedPage,
         name: 'UnauthorisedPage',
         component: UnauthorisedPage,
     },
     {
-        path: '/:pathMatch(.*)*',
+        path: paths.pageNotFound,
         name: 'PageNotFound',
         component: PageNotFound,
     },
     {
-        path: '/login',
+        path: paths.loginPage,
         name: 'LogInPage',
         component: LogInPage,
         beforeEnter: (__to, __from, next) => {
@@ -40,7 +41,7 @@ const routes = [
 
     },
     {
-        path: '/userprofile',
+        path: paths.userProfilePage,
         name: 'UserProfilePage',
         component: UserProfilePage,
         beforeEnter: (__to, __from, next) => {
@@ -52,7 +53,7 @@ const routes = [
         },
     },
     {
-        path: '/register',
+        path: paths.registrationPage,
         name: 'RegistrationPage',
         component: RegistrationPage,
         beforeEnter: (__to, __from, next) => {
@@ -65,7 +66,7 @@ const routes = [
 
     },
     {
-        path: '/logout',
+        path: paths.logoutPage,
         name: 'LogOutPage',
         component: LogOutPage,
         beforeEnter: (__to, __from, next) => {
