@@ -55,6 +55,7 @@ npm run dev
 ```sh
 npm run build
 ```
+Files will be compiled into the 'dist' folder
 
 ### Lint with [ESLint](https://eslint.org/)
 
